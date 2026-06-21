@@ -23,26 +23,16 @@ const bookingSeat = async (req, res) => {
         return;
 
     } catch {
-        // if (eventID && seatNumber) {
-        console.log("running ")
-        console.log("running ")
-        console.log("running ")
-        console.log("running ")
-        console.log("running ")
             const timeOutSeats = await Seats.updateMany(
                 { eventID, seatNumber: { $in: seatNumber } },
                 {
                     $set: { status: "open", reserve_id: null },
                 },
             );
-            console.log(timeOutSeats)
-            console.log(timeOutSeats)
             res.status(400).json({ success: false, message: "Your Booking Time Expired" });
 
             return;
         }
-    // }
-
 };
 
 module.exports = { bookingSeat }
