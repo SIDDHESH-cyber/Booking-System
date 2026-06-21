@@ -39,6 +39,19 @@ function App() {
       .then(res => setEventData(res.data));
   }, [selectedEventId]);
 
+//   useEffect(() => {
+//   if (!selectedEventId) return;
+//   const fetchSeats = () => {
+//     axios.get(`http://localhost:5000/api/events/${selectedEventId}`)
+//       .then(res => setEventData(res.data))
+//       .catch(err => console.error("Error refreshing seats:", err));
+//   };
+//   fetchSeats();
+//   const interval = setInterval(fetchSeats, 11000); 
+//   return () => clearInterval(interval);
+
+// }, [selectedEventId]);
+
   const handleReserve = async () => {
     if (!userName.trim() || selectedSeats.length === 0) {
       setError('Please type your name and select at least one seat.');
