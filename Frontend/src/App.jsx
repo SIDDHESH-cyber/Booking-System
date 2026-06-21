@@ -75,7 +75,7 @@ function App() {
 
   return (
     <div className="container">
-      <h1 style={{ textAlign: 'center', color: '#6d28d9' }}>🎟️ SortMyScene Bookings</h1>
+      <h1 style={{ textAlign: 'center', color: '#6d28d9' }}>Bookings System - SortMyScene</h1>
       {error && <div className="error-banner">{error}</div>}
 
       {step === 1 ? (
