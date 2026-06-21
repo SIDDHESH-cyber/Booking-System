@@ -50,24 +50,22 @@ body {
   transform: scale(1.05);
 }
 
-/* Specific Task Color Coding Constraints */
-/* Specific Task Color Coding Layout */
 .seat.available { 
-  background-color: #10b981; /* Green */
+  background-color: #10b981;
 } 
 
 .seat.selected { 
-  background-color: #3b82f6; /* Blue */
+  background-color: #3b82f6; 
   border: 2px solid #1d4ed8; 
 } 
 
 .seat.reserved { 
-  background-color: #eab308; /* Yellow */
+  background-color: #eab308; 
   cursor: not-allowed; 
 } 
 
 .seat.booked { 
-  background-color: #9ca3af; /* Gray */
+  background-color: #9ca3af;
   cursor: not-allowed; 
 }
 

@@ -11,27 +11,13 @@ function App() {
   const [userName, setUserName] = useState('');
   const [selectedSeats, setSelectedSeats] = useState([]);
   const [error, setError] = useState('');
-  const [step, setStep] = useState(1); // 1 = Selection Page, 2 = Confirmation Page
+  const [step, setStep] = useState(1);
   const [activeReservation, setActiveReservation] = useState(null);
 
-  // Load all events from API when the app starts
-  // useEffect(() => {
-  //   axios.get('http://localhost:5000/api/events')
-  //     .then(res => setEvents(res.data));
-  // }, []);
-
   useEffect(() => {
-  console.log("Calling API...");
-
-  axios
-    .get("http://localhost:5000/api/events")
-    .then((res) => {
-      setEvents(res.data.allEvents);
-    })
-    .catch((err) => {
-      console.error("API Error:", err);
-    });
-}, []);
+    axios.get('http://localhost:5000/api/events')
+      .then(res => setEvents(res.data));
+  }, []);
 
   useEffect(() => {
     if (!selectedEventId) return;
@@ -39,18 +25,18 @@ function App() {
       .then(res => setEventData(res.data));
   }, [selectedEventId]);
 
-//   useEffect(() => {
-//   if (!selectedEventId) return;
-//   const fetchSeats = () => {
-//     axios.get(`http://localhost:5000/api/events/${selectedEventId}`)
-//       .then(res => setEventData(res.data))
-//       .catch(err => console.error("Error refreshing seats:", err));
-//   };
-//   fetchSeats();
-//   const interval = setInterval(fetchSeats, 11000); 
-//   return () => clearInterval(interval);
+  useEffect(() => {
+  if (!selectedEventId) return;
+  const fetchSeats = () => {
+    axios.get(`http://localhost:5000/api/events/${selectedEventId}`)
+      .then(res => setEventData(res.data))
+      .catch(err => console.error("Error refreshing seats:", err));
+  };
+  fetchSeats();
+  const interval = setInterval(fetchSeats, 11000); 
+  return () => clearInterval(interval);
 
-// }, [selectedEventId]);
+}, [selectedEventId]);
 
   const handleReserve = async () => {
     if (!userName.trim() || selectedSeats.length === 0) {
@@ -66,7 +52,7 @@ function App() {
       });
 
       setActiveReservation({ reservationId: res.data._id, eventId: selectedEventId, seats: selectedSeats });
-      setStep(2); // Go to the Confirmation screen
+      setStep(2); 
       setError('');
     } catch (err) {
       setError(err.response?.data?.error || 'Seats are no longer available.');

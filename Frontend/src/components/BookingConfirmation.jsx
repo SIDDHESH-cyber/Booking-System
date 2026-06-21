@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 function BookingConfirmation({ reservationData, onSuccess, onFailure }) {
-  const [timeLeft, setTimeLeft] = useState(10); // 10 minutes
+  const [timeLeft, setTimeLeft] = useState(600); // 10 minutes
   const [isExpired, setIsExpired] = useState(false);
 
   useEffect(() => {
@@ -12,7 +12,7 @@ function BookingConfirmation({ reservationData, onSuccess, onFailure }) {
         return;
       }
       if (timeLeft === 1) {
-        clearInterval(timer); // Stop the clock
+        clearInterval(timer); 
         setIsExpired(true);
         onFailure("Your 10-minute reservation hold has expired.");
 
@@ -49,8 +49,6 @@ function BookingConfirmation({ reservationData, onSuccess, onFailure }) {
       });
       onSuccess();
     } catch (err) {
-      // Run as Query to remove lock from seats
-
       onFailure("Booking failed. Seats might have expired.");
     }
   };
