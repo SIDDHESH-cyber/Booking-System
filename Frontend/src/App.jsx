@@ -16,7 +16,7 @@ function App() {
 
   useEffect(() => {
     axios.get('http://localhost:5000/api/events')
-      .then(res => setEvents(res.data));
+      .then(res => setEvents(res.data..allEvents));
   }, []);
 
   useEffect(() => {
