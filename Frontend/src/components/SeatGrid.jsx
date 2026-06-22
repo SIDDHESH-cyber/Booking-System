@@ -1,5 +1,3 @@
-import React from 'react';
-
 function SeatGrid({ seats, selectedSeats, setSelectedSeats }) {
   
   const handleSeatClick = (seatNumber, currentStatus) => {
