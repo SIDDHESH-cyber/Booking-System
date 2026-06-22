@@ -7,7 +7,7 @@ const ReservationSchema = new mongoose.Schema({
     expiresAt: {
         type: Date,
         default: Date.now,
-        expires: 10, //5 minutes
+        expires: 600, //10 minutes
     }
 })
 
