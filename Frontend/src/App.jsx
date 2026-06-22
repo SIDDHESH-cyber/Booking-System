@@ -73,7 +73,10 @@ function App() {
 
           <div className="input-group">
             <label><strong>Select Live Event</strong></label>
-            <select value={selectedEventId} onChange={(e) => { setSelectedEventId(e.target.value); setSelectedSeats([]); }}>
+            <select
+              value={selectedEventId}
+              onChange={(e) => { setSelectedEventId(e.target.value); setSelectedSeats([]); }}
+              style={{ width: '100%', padding: '12px', borderRadius: '8px', border: '1px solid #ccc', fontSize: '16px' }}>
               <option value="">-- Choose an Event --</option>
               {events.map(evt => <option key={evt._id} value={evt._id}>{evt.name}</option>)}
             </select>
